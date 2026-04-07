@@ -7,17 +7,17 @@
 ## 1. 最優先タスク（着手順）
 
 ### 1-1. リポジトリ基盤の作成
-- [ ] ディレクトリを仕様どおり作成
-	- [ ] `.github/workflows/`
-	- [ ] `config/`
-	- [ ] `src/`
-	- [ ] `tests/`
-- [ ] `requirements.txt` を作成（最低限: `arxiv`, `pyyaml`, `requests`, `python-dotenv`, `notion-client`, `pytest`, `google-generativeai` など）
-- [ ] `.env.example` を作成
-	- [ ] `GEMINI_API_KEY`
-	- [ ] `NOTION_API_KEY`
-	- [ ] `NOTION_DATABASE_ID`
-- [ ] `.gitignore` に `.env`, `__pycache__/`, `.pytest_cache/` などを追加
+- [x] ディレクトリを仕様どおり作成
+	- [x] `.github/workflows/`
+	- [x] `config/`
+	- [x] `src/`
+	- [x] `tests/`
+- [x] `requirements.txt` を作成（最低限: `arxiv`, `pyyaml`, `requests`, `python-dotenv`, `notion-client`, `pytest`, `google-generativeai` など）
+- [x] `.env.example` を作成
+	- [x] `GEMINI_API_KEY`
+	- [x] `NOTION_API_KEY`
+	- [x] `NOTION_DATABASE_ID`
+- [x] `.gitignore` に `.env`, `__pycache__/`, `.pytest_cache/` などを追加
 
 ### 1-2. 設定ファイルの準備
 - [ ] `config/keywords.yaml` を仕様書の内容で作成

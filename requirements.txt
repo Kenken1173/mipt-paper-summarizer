@@ -1,0 +1,6 @@
+arxiv
+google-generativeai
+notion-client
+PyYAML
+python-dotenv
+pytest
