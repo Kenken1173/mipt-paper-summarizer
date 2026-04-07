@@ -182,7 +182,7 @@ system_prompt: |
 
   core_question: この論文が解決しようとしている問いを1〜2文で
   novelty: 手法の新規性（特にポストセレクション回避、新しい測定スキームに注目）を1〜2文で
-  qec_connection: 量子誤り訂正・デコードとの関連（無ければ「なし」）
+  stabilizer_connection: 量子誤り訂正・デコードとの関連（無ければ「なし」）
   category: 以下から1つ選択 [実験向き, 純粋理論, 数値計算]
   importance: 以下から1つ選択 [A:最優先, B:標準, C:参考]
   one_line: 一行要約（30字以内）
@@ -208,7 +208,6 @@ user_prompt_template: |
 | タイトル | Title | 論文タイトル |
 | URL | URL | arXivリンク |
 | 投稿日 | Date | arXiv投稿日 |
-| 取得日 | Date | システム処理日 |
 | 重要度 | Select | A / B / C |
 | カテゴリ | Select | 実験向き / 純粋理論 / 数値計算 |
 | コア・プロブレム | Rich Text | LLM出力 |
@@ -353,7 +352,7 @@ NOTION_DATABASE_ID=your_database_id
 ## 10. 開発ロードマップ
 
 ### Week 1: 基盤構築
-- [ ] GitHubリポジトリ作成・ディレクトリ構成・`requirements.txt`
+- [x] GitHubリポジトリ作成・ディレクトリ構成・`requirements.txt`
 - [ ] arXiv API取得モジュール（`fetcher.py`）
 - [ ] キーワードフィルタリング（`filter.py`）
 - [ ] 動作確認: `python src/main.py` でフィルタ結果をターミナルに出力

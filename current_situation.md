@@ -29,9 +29,11 @@
 	- [x] `user_prompt_template`
 
 ### 1-3. コア実装（Python）
-- [ ] `src/models.py`
-	- [ ] `Paper` データクラス
-	- [ ] `Summary` データクラス
+- [x] `src/models.py`
+	- [x] `Paper` データクラス
+	- [x] `FilterResult` データクラス
+	- [x] `Summary` データクラス
+	- [x] `NotionRecord` データクラス
 - [ ] `src/fetcher.py`
 	- [ ] arXiv から `quant-ph OR cond-mat.stat-mech` を取得
 	- [ ] 取得範囲を過去 24-48 時間で制限
