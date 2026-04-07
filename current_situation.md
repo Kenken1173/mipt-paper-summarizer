@@ -20,13 +20,13 @@
 - [x] `.gitignore` に `.env`, `__pycache__/`, `.pytest_cache/` などを追加
 
 ### 1-2. 設定ファイルの準備
-- [ ] `config/keywords.yaml` を仕様書の内容で作成
-	- [ ] `primary_keywords`
-	- [ ] `scoring_keywords`
-	- [ ] `score_threshold`
-- [ ] `config/prompts.yaml` を仕様書の内容で作成
-	- [ ] `system_prompt`
-	- [ ] `user_prompt_template`
+- [x] `config/keywords.yaml` を仕様書の内容で作成
+	- [x] `primary_keywords`
+	- [x] `scoring_keywords`
+	- [x] `score_threshold`
+- [x] `config/prompts.yaml` を仕様書の内容で作成
+	- [x] `system_prompt`
+	- [x] `user_prompt_template`
 
 ### 1-3. コア実装（Python）
 - [ ] `src/models.py`

@@ -1,0 +1,29 @@
+# 一次フィルタ: いずれかを含む論文のみ通過
+primary_keywords:
+  - "measurement-induced"
+  - "monitored quantum"
+  - "entanglement transition"
+  - "hybrid circuit"
+  - "quantum circuit"
+
+# スコアリング: マッチしたキーワードごとに加点
+scoring_keywords:
+  - keyword: "post-selection"
+    weight: 3
+  - keyword: "error correction"
+    weight: 3
+  - keyword: "stabilizer"
+    weight: 2
+  - keyword: "channel"
+    weight:  2
+  - keyword: "feedback"
+    weight: 2
+  - keyword: "Clifford"
+    weight: 1
+  - keyword: "Haar random"
+    weight: 1
+  - keyword: "decoding"
+    weight:  1
+
+# スコア閾値: この値以上の論文のみLLMに渡す
+score_threshold: 2
