@@ -94,8 +94,8 @@
 - [ ] 日次スケジュールで 1 週間連続稼働できる
 - [ ] エラー時の挙動が仕様どおり（Notion エラーはジョブ失敗、それ以外は継続）
 
-## 5. 直近アクション（今日やること）
-- [ ] プロジェクト雛形作成（フォルダ、requirements、env、設定 YAML）
+## 5. 直近アクション
+- [x] プロジェクト雛形作成（フォルダ、requirements、env、設定 YAML）
 - [ ] `fetcher.py` と `filter.py` を先に実装し、フィルタ結果を標準出力で確認
 - [ ] その後 `summarizer.py` を追加し、1-2 件で YAML パース確認
 - [ ] 最後に `notion_client.py` と GitHub Actions を接続して手動実行テスト
