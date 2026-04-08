@@ -131,7 +131,7 @@ mipt-paper-summarizer/
 
 #### データソース
 - arXiv API（Atom/RSS）
-- クエリ: `cat:quant-ph OR cat:cond-mat.stat-mech`
+- クエリ: `cat:quant-ph OR cat:cond-mat`
 - 取得範囲: 実行日と同じ日の新着論文（週末を跨ぐ場合に備え48時間）
 
 #### キーワード設定（`config/keywords.yaml`）
