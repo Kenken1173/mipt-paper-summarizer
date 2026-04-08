@@ -7,6 +7,7 @@
 | v1 | - | 初版（Linux/cron/Ollama前提） |
 | v2 | 2026-04-07 | 実行環境・推論バックエンド・通知先を実態に合わせて全面改訂 |
 | v3 | 2026-04-07 | 実行基盤をGitHub Actionsに変更。Ollamaフォールバック廃止。ディレクトリ構成・エラーハンドリング・ロードマップを対応修正 |
+| v4 | 2026-04-08 | cond-mat.stat-mech -> cond-matに検索範囲を増加、実行日と同じ日の新着論文を取得するように変更 |
 
 ---
 
@@ -131,7 +132,7 @@ mipt-paper-summarizer/
 #### データソース
 - arXiv API（Atom/RSS）
 - クエリ: `cat:quant-ph OR cat:cond-mat.stat-mech`
-- 取得範囲: 過去24〜48時間以内の新着論文（週末を跨ぐ場合に備え48時間）
+- 取得範囲: 実行日と同じ日の新着論文（週末を跨ぐ場合に備え48時間）
 
 #### キーワード設定（`config/keywords.yaml`）
 
@@ -246,7 +247,7 @@ NOTION_DATABASE_ID=your_database_id
 ┌────────────────────────┐     ┌───────────────────┐
 │  1. Fetch              │     │  arXiv API        │
 │  arxiv パッケージで取得 │◄────│  quant-ph         │
-│  過去24-48時間の新着   │     │  cond-mat.stat-mech│
+│  過去24-48時間の新着   │     │  cond-mat│
 └──────────┬─────────────┘     └───────────────────┘
            │ raw論文リスト
            ▼

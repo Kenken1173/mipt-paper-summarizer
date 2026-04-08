@@ -34,10 +34,10 @@
 	- [x] `FilterResult` データクラス
 	- [x] `Summary` データクラス
 	- [x] `NotionRecord` データクラス
-- [ ] `src/fetcher.py`
-	- [ ] arXiv から `quant-ph OR cond-mat.stat-mech` を取得
-	- [ ] 取得範囲を過去 24-48 時間で制限
-	- [ ] API エラー時の 3 回リトライ（5s -> 15s -> 45s）
+- [x] `src/fetcher.py`
+	- [x] arXiv から `quant-ph OR cond-mat` を取得
+	- [x] 取得範囲を過去 24-48 時間で制限
+	- [x] API エラー時の 3 回リトライ（3s -> 3s -> 3s）
 - [ ] `src/filter.py`
 	- [ ] 一次フィルタ（`primary_keywords` OR）
 	- [ ] 重み付きスコア計算

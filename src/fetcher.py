@@ -1,20 +1,17 @@
 import models
 import datetime
-import urllib
 # https://pypi.org/project/arxiv/
 import arxiv
+import logging
+import time
 
-search_results = 1
+search_results = 3
 
 # http://export.arxiv.org/api/query?search_query=FIELD:VALUE
 params = {
     "search_query": "cat:quant-ph OR cat:cond-mat",
-    "start": 0,
     "max_results": search_results,
-    "sortBy": "submittedDate",
-    "sortOrder": "descending"
 }
-url = urllib.parse.urlencode(params)
 
 def entry_to_paper(entry) -> models.Paper:
     """ 1つの arXiv API のエントリーを Paper クラスに変換する関数 """
@@ -27,24 +24,13 @@ def entry_to_paper(entry) -> models.Paper:
         arxiv_id = entry.get_short_id()
     )
 
-client = arxiv.Client()
-search = arxiv.Search(query=params["search_query"], max_results=params["max_results"], sort_by=arxiv.SortCriterion.SubmittedDate, sort_order=arxiv.SortOrder.Descending)
-results = client.results(search)
+client = arxiv.Client(delay_seconds=3)
 
-# イテレータをループして、各エントリを Paper に変換
-papers = [entry_to_paper(entry) for entry in results]
-print(papers)
-
-
-# TODO: ここで、上記の知識を活用しながらarXiv API を叩いて、最近の論文を取得するコードを書く
-def fetch_recent_papers(hours=24, max_results=search_results, test=False) -> list[models.Paper]:
-    result = []
-    test = True # テストモードではダミーデータを返す
-    for _ in range(max_results):
-        # arXiv API を叩いて、最近の論文を取得するコードを書く
-        
-        # ここではテストモードのときにダミーデータを返すようにする
-        if test:
+def fetch_recent_papers(params = params, test=True) -> list[models.Paper]:
+    # ここではテストモードのときにダミーデータを返すようにする
+    if test:
+        result = []
+        for _ in range(params["max_results"]):
             paper = models.Paper(
                 title = "Example Paper Title",
                 authors = ["Author A", "Author B"],
@@ -53,5 +39,33 @@ def fetch_recent_papers(hours=24, max_results=search_results, test=False) -> lis
                 published_at = datetime.datetime.now(),
                 arxiv_id = "hogehoge"
             )
-        result.append(paper)
-    return result
+            result.append(paper)
+        return result
+
+    # arXiv API を叩いて、最近の論文を取得するコードを書く
+    search = arxiv.Search(query=params["search_query"], max_results=params["max_results"], sort_by=arxiv.SortCriterion.SubmittedDate, sort_order=arxiv.SortOrder.Descending)
+    
+    today = datetime.datetime.now(datetime.timezone.utc).date()
+    cutoff = today -  datetime.timedelta(days=2)  # 過去2日以内
+    papers = []
+    retry_delays = [3, 3, 3] # エラーが発生した場合のリトライの待ち時間（秒）
+    for attempt, delay in enumerate(retry_delays):
+        try:
+            for entry in client.results(search):
+                if entry.published.date() < cutoff:
+                    break
+                papers.append(entry_to_paper(entry))
+            break # 成功したらループを抜ける
+        except Exception as e:
+            logging.warning(f"arXiv API エラー試行 {attempt + 1}/3: {e}")
+            papers.clear() # エラーが発生した場合は取得した論文をクリアする
+            if attempt < len(retry_delays) - 1:
+                time.sleep(delay)
+            else:
+                logging.error("arXiv API: 全リトライ失敗。終了します。")
+        
+    logging.info(f"arXiv取得完了: {len(papers)}本")
+
+    return papers
+
+# print(fetch_recent_papers(test=False)) # デバッグ用: 実際のAPIを叩いて論文を取得する場合は test=False にする
