@@ -354,7 +354,7 @@ NOTION_DATABASE_ID=your_database_id
 
 ### Week 1: 基盤構築
 - [x] GitHubリポジトリ作成・ディレクトリ構成・`requirements.txt`
-- [ ] arXiv API取得モジュール（`fetcher.py`）
+- [x] arXiv API取得モジュール（`fetcher.py`）
 - [ ] キーワードフィルタリング（`filter.py`）
 - [ ] 動作確認: `python src/main.py` でフィルタ結果をターミナルに出力
 
