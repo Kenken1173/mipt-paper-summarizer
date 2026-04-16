@@ -38,10 +38,10 @@
 	- [x] arXiv から `quant-ph OR cond-mat` を取得
 	- [x] 取得範囲を過去 24-48 時間で制限
 	- [x] API エラー時の 3 回リトライ（3s -> 3s -> 3s）
-- [ ] `src/filter.py`
-	- [ ] 一次フィルタ（`primary_keywords` OR）
-	- [ ] 重み付きスコア計算
-	- [ ] 閾値以上を抽出しスコア降順ソート
+- [x] `src/filter.py`
+	- [x] 一次フィルタ（`primary_keywords` OR）
+	- [x] 重み付きスコア計算
+	- [x] 閾値以上を抽出しスコア降順ソート
 - [ ] `src/summarizer.py`
 	- [ ] Gemini `gemini-2.0-flash` 呼び出し
 	- [ ] YAML パース
